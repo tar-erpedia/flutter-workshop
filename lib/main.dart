@@ -67,8 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            new ListTile(
-              leading: new Icon(Icons.info),
+            ListTile(
+              leading: const Icon(Icons.info),
               title: const Text('About'),
               onTap:(){
                 setState((){
@@ -77,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pop(context);
               }
             ),
-            new ListTile(
-              leading: new Icon(Icons.calendar_month),
+            ListTile(
+              leading: const Icon(Icons.calendar_month),
               title: const Text('Shifts'),
               onTap:(){
                 setState((){
@@ -115,9 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
             Text(
-              '$_text',
+              _text,
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
