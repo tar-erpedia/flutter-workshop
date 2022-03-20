@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SfCalendar(
               view: CalendarView.month,
-              dataSource: ShiftsDataSource(_getDataSource()),
+              dataSource: ShiftsDataSource(_getDataSource(shitsSource)),
             ),
           ],
         ),
