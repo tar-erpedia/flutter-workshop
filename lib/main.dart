@@ -125,21 +125,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final shiftsSource = shitsSource;
 
-    shiftsSource.foreach(
-      date = shiftsSource.date;
-      toran = shiftsSource.toran;
-      time = shiftsSource.time;
+    for (var shift in shiftsSource) {
+      date = shift.date;
+      toran = shift.toran;
+      time = shift.time;
 
       if (time == 0) {
-        startTime = DateTime(date.year, date.month, date.day, 8, 0, 0);
-        endTime = startTime.add(const Duration(hours: 9));
+      startTime = DateTime(date.year, date.month, date.day, 8, 0, 0);
+      endTime = startTime.add(const Duration(hours: 9));
       } else {
-        startTime = DateTime(date.year, date.month, date.day, 17, 0, 0);
-        endTime = startTime.add(const Duration(hours: 15));
+      startTime = DateTime(date.year, date.month, date.day, 17, 0, 0);
+      endTime = startTime.add(const Duration(hours: 15));
       }
-        shifts.add(
-        Shift(toran, startTime, endTime));
-    );
+      shifts.add(
+      Shift(toran, startTime, endTime));
+      }
+
     return shifts;
   }
 }
