@@ -48,9 +48,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   String _text = "Initial Text";
-  
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -79,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             ),
             new ListTile(
-              leading: new Icon(Icons.save),
+              leading: new Icon(Icons.calendar_month),
               title: const Text('Shifts'),
               onTap:(){
                 setState((){
@@ -88,7 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pop(context);
               }
             ),
-
           ],
         ),
       ),
