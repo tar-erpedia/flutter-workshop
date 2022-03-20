@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -96,11 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Toran calnder shifts:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            SfCalendar(
+              view: CalendarView.month,
+              dataSource: ShiftsDataSource(_getDataSource()),
             ),
           ],
         ),
@@ -109,7 +110,56 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  List<Shift> _getDataSource(shitsSource) {
+    final List<Shift> shifts = <Shift>[];
+    var DateTime date;
+    var DateTime startTime;
+    var String toran;
+    var int time;
+    var DateTime endTime;
+
+    final shiftsSource = shitsSource;
+
+    shiftsSource.foreach(
+      date = shiftsSource.date;
+      toran = shiftsSource.toran;
+      time = shiftsSource.time;
+
+      if (time == 0) {
+        startTime = DateTime(date.year, date.month, date.day, 8, 0, 0);
+        endTime = startTime.add(const Duration(hours: 9));
+      } else {
+        startTime = DateTime(date.year, date.month, date.day, 17, 0, 0);
+        endTime = startTime.add(const Duration(hours: 15));
+      }
+        shifts.add(
+        Shift(toran, startTime, endTime));
+    );
+    return shifts;
+  }
 }
+
+class ShiftsDataSource extends CalendarDataSource {
+  ShiftsDataSource(List<Shift> source){
+    appointments = source;
+  }
+
+  @override
+  String getSubject(int index) {
+    return appointments![index].toran;
+  }
+}
+
+class Shift {
+  Shift(this.toran, this.startTime, this.endTime);
+
+  String toran;
+  DateTime startTime;
+  DateTime endTime;
+}
+
